@@ -1,0 +1,138 @@
+﻿<!-- Navigation Header -->
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">
+        <h2>e-Khadamet</h2>
+      </div>
+      <nav class="nav">
+        <a href="#home">{{ get('home') }}</a>
+        <a href="#about">{{ get('about') }}</a>
+        <a href="#services">{{ get('services') }}</a>
+        <a href="#contact">{{ get('contact') }}</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-language" (click)="toggleLanguage()">
+          {{ currentLanguage === 'fr' ? 'AR' : 'FR' }}
+        </button>
+        <a href="/login" class="btn btn-primary">{{ get('login') }}</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>{{ get('hero_title') }}</h1>
+      <p class="subtitle">{{ get('hero_subtitle') }}</p>
+      <p class="description">{{ get('hero_desc') }}</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary btn-large" (click)="navigateTo('attestation')">
+          {{ get('start_now') }}
+        </button>
+        <button class="btn btn-outline btn-large">
+          {{ get('learn_more') }}
+        </button>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="illustration-placeholder">
+        <span class="icon-large">🇹🇳</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <h2>{{ get('Nos réalisations') }}</h2>
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let stat of stats">
+        <div class="stat-icon">{{ stat.icon }}</div>
+        <div class="stat-value">{{ stat.value }}</div>
+        <div class="stat-label">{{ get(stat.labelKey) }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+  <div class="container">
+    <h2>{{ get('our_services') }}</h2>
+    <p class="section-subtitle">{{ get('services_desc') }}</p>
+    
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services" [class]="'service-' + service.color">
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3 class="service-title">{{ get(service.titleKey) }}</h3>
+        <p class="service-description">{{ get(service.descKey) }}</p>
+        <button class="btn btn-secondary" (click)="navigateTo(get(service.titleKey))">
+          {{ get('learn_more') }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="container">
+    <h2>{{ get('why_choose') }}</h2>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="feature-icon" [ngSwitch]="feature.iconKey">
+          <span *ngSwitchCase="'fast'">⚡︎</span>
+          <span *ngSwitchCase="'secure'">⛉</span>
+          <span *ngSwitchCase="'easy'">💬</span>
+          <span *ngSwitchCase="'transparent'">👁</span>
+          <span *ngSwitchDefault>🆘</span>
+        </div>
+        <h3>{{ get(feature.titleKey) }}</h3>
+        <p>{{ get(feature.descKey) }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2>{{ get('ready_to_start') }}</h2>
+    <p>{{ get('hero_desc') }}</p>
+    <div class="cta-buttons">
+      <button class="btn btn-primary btn-large">{{ get('create_account') }}</button>
+      <button class="btn btn-outline">{{ get('read_guide') }}</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Info -->
+<section class="info-section">
+  <div class="container">
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>📍 {{ get('address') }}</h3>
+        <p>{{ get('ministry') }}<br>{{ get('tunisia') }}</p>
+      </div>
+      <div class="info-card">
+        <h3>📞 {{ get('phone') }}</h3>
+        <p>+216 71 123 456<br>{{ get('contact_ministry') }}</p>
+      </div>
+      <div class="info-card">
+        <h3>✉️ {{ get('email') }}</h3>
+        <p>support@e-khadamet.tn<br>{{ get('reply_24h') }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>{{ get('all_rights') }}</p>
+  </div>
+</footer>
