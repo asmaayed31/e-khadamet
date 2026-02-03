@@ -28,6 +28,7 @@ export class LanguageServiceImpl implements LanguageService {
       'header.contact': 'Contact',
       'header.login': 'Connexion',
       'header.register': "S'inscrire",
+      'backLink': 'Retour à l\'accueil',
 
       // Hero
       'hero.welcome': 'Bienvenue sur e-Khadamet Tunisie',
@@ -42,6 +43,7 @@ export class LanguageServiceImpl implements LanguageService {
       // Services
       'services.title': 'services par secteur',
       'services.subtitle': 'Toutes vos démarches administratives sont classées par domaine afin que vous puissiez y accéder rapidement et facilement',
+      'services.empty': 'Aucun service disponible pour le moment',
       'services.interieur': 'Ministère de l\'Intérieur',
       'services.interieur.desc': 'Découvrez tous les services de ce secteur',
       'services.sante': 'Santé',
@@ -51,6 +53,7 @@ export class LanguageServiceImpl implements LanguageService {
       'services.other': 'Autres Services',
       'services.other.desc': 'Découvrez tous nos services administratifs en ligne',
       'services.access': 'Accéder au service',
+
 
       // Why Choose
       'why.title': 'Pourquoi choisir e-Khadamet ?',
@@ -96,6 +99,7 @@ export class LanguageServiceImpl implements LanguageService {
       'header.contact': 'الاتصال',
       'header.login': 'تسجيل الدخول',
       'header.register': 'التسجيل',
+      'backLink': 'العودة إلى الرئيسية',
 
       // Hero
       'hero.welcome': 'مرحبا بكم في خدمات تونس الإلكترونية',
@@ -110,6 +114,7 @@ export class LanguageServiceImpl implements LanguageService {
       // Services
       'services.title': 'الخدمات حسب المجال',
       'services.subtitle': 'جميع إجراءاتك الإداريّة مُصنّفة حسب المجال لتتمكن من الوصول إليها بسرعة وسهولة',
+      'services.empty': 'لا توجد خدمات متاحة في الوقت الحالي',
       'services.interieur': 'وزارة الداخلية',
       'services.interieur.desc': 'اكتشف جميع الخدمات في هذا القطاع',
       'services.sante': 'الصحة',
@@ -170,4 +175,5 @@ export class LanguageServiceImpl implements LanguageService {
   getCurrentLanguage(): Language {
     return this.languageSubject.value;
   }
+
 }

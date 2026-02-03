@@ -71,19 +71,19 @@ export class Home {
       icon: '🇭',
       titleKey: 'services.sante',
       descriptionKey: 'services.sante.desc',
-      link: '#sante'
+      link: '/noservices'
     },
     {
       icon: '⛟',
       titleKey: 'services.transport',
       descriptionKey: 'services.transport.desc',
-      link: '#transport'
+      link: '/noservices'
     },
     {
       icon: '✚',
       titleKey: 'services.other',
       descriptionKey: 'services.other.desc',
-      link: '#services'
+      link: '/noservices'
     }
   ];
 }

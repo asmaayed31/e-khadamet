@@ -13,7 +13,7 @@ export class TranslationService {
   public currentLanguage$ = this.currentLanguage.asObservable();
   private isBrowser: boolean;
 
-  private translations = {
+  private translations: Record<Language, Record<string, string>> = {
     fr: {
       // Header
       'home': 'Accueil',
@@ -41,6 +41,7 @@ export class TranslationService {
       'documents_desc': 'Consultez la liste complète des documents',
       'support': 'Support Client',
       'support_desc': 'Assistance disponible 24h/24, 7j/7',
+      'services.empty': 'Aucun service n\'est disponible pour ce secteur',
 
       // Features
       'why_choose': 'Pourquoi Choisir e-Khadamet ?',
@@ -102,6 +103,7 @@ export class TranslationService {
       'documents_desc': 'استشير القائمة الكاملة للوثائق',
       'support': 'الدعم الفني',
       'support_desc': 'مساعدة متاحة على مدار الساعة',
+      'services.empty': 'لا توجد خدمات متاحة لهذا القطاع',
 
       // Features
       'why_choose': 'لماذا اختيار خدماتي ؟',
