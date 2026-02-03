@@ -1,5 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { LanguageServiceImpl } from '@accueil1/services/language.service';
 
 export interface ServiceCardData {
@@ -12,10 +13,10 @@ export interface ServiceCardData {
 @Component({
   selector: 'app-service-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
-    <a 
-      [href]="service.link"
+    <a
+      [routerLink]="service.link"
       class="block bg-gray-100 rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white group"
     >
       <div class="flex flex-col items-center text-center">

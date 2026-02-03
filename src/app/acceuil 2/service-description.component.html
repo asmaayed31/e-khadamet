@@ -1,0 +1,33 @@
+<div class="shadow-lg bg-white rounded-lg">
+  <div class="p-6">
+    <h2 class="flex items-center gap-2 text-xl font-bold mb-4">
+      <span class="text-blue-900">🛈</span>
+      {{ t.title }}
+    </h2>
+    <div class="space-y-4">
+      <p class="text-gray-700 leading-relaxed">
+        {{ t.description }}
+      </p>
+
+      <div>
+        <h3 class="font-semibold text-gray-900 mb-2">{{ t.uses }}</h3>
+        <ul class="space-y-1">
+          <li *ngFor="let item of t.usesList" class="flex items-start gap-2">
+            <span class="text-blue-900 mt-1">•</span>
+            <span class="text-gray-700">{{ item }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
+        <div class="flex items-start gap-2">
+          <span class="text-blue-600 mt-0.5 flex-shrink-0">ℹ️</span>
+          <div>
+            <h4 class="font-semibold text-blue-900 mb-1">{{ t.validity }}</h4>
+            <p class="text-blue-800 text-sm">{{ t.validityText }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

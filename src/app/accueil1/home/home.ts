@@ -65,7 +65,7 @@ export class Home {
       icon: '🏠︎',
       titleKey: 'services.interieur',
       descriptionKey: 'services.interieur.desc',
-      link: '#interieur'
+      link: '/acceuil2'
     },
     {
       icon: '🇭',
