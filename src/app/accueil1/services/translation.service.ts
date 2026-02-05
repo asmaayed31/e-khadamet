@@ -75,6 +75,19 @@ export class TranslationService {
       'contact_ministry': 'Contacter le Ministère',
       'reply_24h': 'Réponse en 24h',
       'all_rights': 'Tous les droits réservés © 2026 e-Khadamet',
+
+      // OTP Verification
+      'otp_title': 'Vérification OTP',
+      'otp_service': 'Attestation de Résidence',
+      'otp_back_link': 'Retour à l\'accueil',
+      'otp_header': 'Vérification OTP',
+      'otp_desc': 'Entrez le code à 6 chiffres envoyé à votre téléphone',
+      'verify': 'Vérifier',
+      'no_code': 'Vous n\'avez pas reçu votre code OTP ?',
+      'resend_in': 'Vous pouvez le renvoyer dans',
+      'resend': 'Renvoyer le code',
+      'otp_error': 'Veuillez saisir les 6 chiffres',
+      'otp_resent': 'Un nouveau code OTP a été envoyé !',
     },
     ar: {
       // Header
@@ -137,6 +150,19 @@ export class TranslationService {
       'contact_ministry': 'اتصل بالوزارة',
       'reply_24h': 'رد في 24 ساعة',
       'all_rights': 'جميع الحقوق محفوظة © 2026 خدماتي',
+
+      // OTP Verification
+      'otp_title': 'التحقق من OTP',
+      'otp_service': 'شهادة الإقامة',
+      'otp_back_link': 'عودة إلى الرئيسية',
+      'otp_header': 'التحقق من OTP',
+      'otp_desc': 'أدخل الرمز المكون من 6 أرقام المرسل إلى هاتفك',
+      'verify': 'التحقق',
+      'no_code': 'لم تستلم رمز OTP الخاص بك؟',
+      'resend_in': 'يمكنك إعادة إرساله في',
+      'resend': 'إعادة إرسال الرمز',
+      'otp_error': 'يرجى إدخال الأرقام الستة',
+      'otp_resent': 'تم إرسال رمز OTP جديد!',
     }
   };
 

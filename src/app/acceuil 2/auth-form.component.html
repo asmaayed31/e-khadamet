@@ -1,4 +1,4 @@
-<app-card class="shadow-xl">
+<app-card class="shadow-xl" dir="ltr">
   <app-card-header>
     <app-card-title class="flex items-center gap-2">
       <span *ngIf="isLogin" class="text-gray-900">➜]</span>
@@ -8,37 +8,42 @@
     <app-card-description>{{ isLogin ? loginContent.description : registerContent.description }}</app-card-description>
   </app-card-header>
   <app-card-content>
-    <form (ngSubmit)="onSubmit($event)" class="space-y-4">
-      <ng-container *ngIf="isLogin; else registerForm">
+    <div *ngIf="showSuccessMessage" class="text-red-500 text-sm mb-4">
+      vous pouvez maintenant connecter avec le mot de passe envoyer a votre numéro
+    </div>
+    <form [formGroup]="isLogin ? loginForm : registerForm" (ngSubmit)="onSubmit($event)" class="space-y-4">
+      <ng-container *ngIf="isLogin; else registerTemplate">
         <div class="space-y-2">
           <app-label [htmlFor]="'phone'">{{ loginContent.phone }}</app-label>
           <div class="relative">
-            <span class="absolute left-3 top-3 w-4 h-4 text-gray-400">✆</span>
+            <span class="absolute left-4 top-8 w-15 h-7 text-gray-400 ">📞</span>
             <app-input
               id="phone"
               type="tel"
               placeholder="+216 XX XXX XXX"
               class="pl-10"
-              [required]="true"
+              formControlName="phone"
             />
           </div>
+          <div *ngIf="phoneError && loginForm.get('phone')?.touched" class="text-red-500 text-sm">{{ phoneError }}</div>
         </div>
 
         <div class="space-y-2">
           <app-label [htmlFor]="'password'">{{ loginContent.password }}</app-label>
           <div class="relative">
-            <span class="absolute left-3 top-3 w-4 h-4 text-gray-400">➤</span>
+            <span class="absolute left-4 top-8 w-15 h-7 text-gray-400">🔒︎</span>
             <app-input
               id="password"
               type="password"
               placeholder="••••••••"
               class="pl-10"
-              [required]="true"
+              formControlName="password"
             />
           </div>
+          <div *ngIf="passwordError && loginForm.get('password')?.touched" class="text-red-500 text-sm">{{ passwordError }}</div>
         </div>
 
-        <app-button type="submit" class="w-full bg-blue-900 hover:bg-blue-800">
+        <app-button type="submit" class="w-full enabled:bg-blue-900  disabled:bg-blue-800" [disabled]="!loginForm.valid">
           <span class="w-4 h-4 mr-2">🔐</span>
           {{ loginContent.button }}
         </app-button>
@@ -57,75 +62,69 @@
         </div>
       </ng-container>
 
-      <ng-template #registerForm>
+
+      <ng-template #registerTemplate>
         <div class="space-y-2">
           <app-label [htmlFor]="'lastName'">{{ registerContent.lastName }}</app-label>
           <div class="relative">
-            <span class="absolute left-3 top-3 w-4 h-4 text-gray-400">👤</span>
+            <span class="absolute left-4 top-8 w-15 h-7 text-gray-400">👤</span>
             <app-input
               id="lastName"
               type="text"
+              placeholder="veuillez saisir votre nom"
               class="pl-10"
-              [required]="true"
+              formControlName="lastName"
             />
           </div>
+          <div *ngIf="lastNameError && registerForm.get('lastName')?.touched" class="text-red-500 text-sm">{{ lastNameError }}</div>
         </div>
 
         <div class="space-y-2">
           <app-label [htmlFor]="'firstName'">{{ registerContent.firstName }}</app-label>
           <div class="relative">
-            <span class="absolute left-3 top-3 w-4 h-4 text-gray-400">👤</span>
+            <span class="absolute left-4 top-8 w-15 h-7 text-gray-400">👤</span>
             <app-input
               id="firstName"
               type="text"
+              placeholder="veuillez saisir votre prénom"
               class="pl-10"
-              [required]="true"
+              formControlName="firstName"
             />
           </div>
+          <div *ngIf="firstNameError && registerForm.get('firstName')?.touched" class="text-red-500 text-sm">{{ firstNameError }}</div>
         </div>
 
         <div class="space-y-2">
           <app-label [htmlFor]="'dob'">{{ registerContent.dob }}</app-label>
           <div class="relative">
-            <span class="absolute left-3 top-3 w-4 h-4 text-gray-400">📅</span>
+            <span class="absolute left-4 top-8 w-15 h-7 text-gray-400">𝄜</span>
             <app-input
               id="dob"
               type="date"
               class="pl-10"
-              [required]="true"
+              formControlName="dob"
             />
           </div>
+          <div *ngIf="dobError && registerForm.get('dob')?.touched" class="text-red-500 text-sm">{{ dobError }}</div>
         </div>
 
         <div class="space-y-2">
           <app-label [htmlFor]="'phone-register'">{{ registerContent.phone }}</app-label>
           <div class="relative">
-            <span class="absolute left-3 top-3 w-4 h-4 text-gray-400">📞</span>
+            <span class="absolute left-4 top-8 w-15 h-7 text-gray-400">✆</span>
             <app-input
               id="phone-register"
               type="tel"
               placeholder="+216 XX XXX XXX"
               class="pl-10"
-              [required]="true"
+              formControlName="phone"
             />
           </div>
+          <div *ngIf="registerPhoneError && registerForm.get('phone')?.touched" class="text-red-500 text-sm">{{ registerPhoneError }}</div>
         </div>
 
-        <div class="space-y-2">
-          <app-label [htmlFor]="'password-register'">{{ registerContent.password }}</app-label>
-          <div class="relative">
-            <span class="absolute left-3 top-3 w-4 h-4 text-gray-400">🔒</span>
-            <app-input
-              id="password-register"
-              type="password"
-              placeholder="••••••••"
-              class="pl-10"
-              [required]="true"
-            />
-          </div>
-        </div>
 
-        <app-button type="submit" class="w-full bg-blue-900 hover:bg-blue-800">
+        <app-button type="submit" class="w-full enabled:bg-blue-900 disabled:bg-blue-800" [disabled]="!registerForm.valid">
           <span class="w-4 h-4 mr-2">👤</span>
           {{ registerContent.button }}
         </app-button>

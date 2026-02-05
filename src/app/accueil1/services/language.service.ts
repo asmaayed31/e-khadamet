@@ -88,6 +88,19 @@ export class LanguageServiceImpl implements LanguageService {
       'footer.legal': 'Mentions légales',
       'footer.privacy': 'Politique de confidentialité',
       'footer.terms': "Conditions d'utilisation",
+
+      // OTP
+      'otp_title': 'Vérification OTP',
+      'otp_service': 'Attestation de Résidence',
+      'otp_back_link': 'Retour à l\'accueil',
+      'otp_header': 'Saisissez votre code de vérification',
+      'otp_desc': 'Entrez le code à 6 chiffres envoyé à votre numéro',
+      'verify': 'Vérifier',
+      'no_code': 'Vous n\'avez pas reçu le code ?',
+      'resend_in': 'Renvoyer dans',
+      'resend': 'Renvoyer',
+      'otp_error': 'Veuillez entrer un code valide à 6 chiffres',
+      'otp_resent': 'Code OTP renvoyé avec succès',
     },
     ar: {
       // Header
@@ -158,6 +171,19 @@ export class LanguageServiceImpl implements LanguageService {
       'footer.legal': 'الشروط القانونية',
       'footer.privacy': 'سياسة الخصوصية',
       'footer.terms': 'شروط الاستخدام',
+
+      // OTP
+      'otp_title':' التحقق من رمز OTP',
+      'otp_service': 'شهادة الإقامة',
+      'otp_back_link': 'العودة إلى الرئيسية',
+      'otp_header': 'أدخل رمز التحقق الخاص بك',
+      'otp_desc': 'أدخل الرمز المكون من 6 أرقام المرسل إلى رقمك',
+      'verify': 'تحقق',
+      'no_code': 'لم تتلق الرمز؟',
+      'resend_in': 'إعادة الإرسال في',
+      'resend': 'إعادة الإرسال',
+      'otp_error': 'يرجى إدخال رمز صالح مكون من 6 أرقام',
+      'otp_resent': 'تم إعادة إرسال رمز OTP بنجاح',
     }
   };
 

@@ -1,73 +1,119 @@
-<header class="bg-white border-b border-gray-200 shadow-sm">
-      <div class="max-w-7xl mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-          <!-- Logo et Titre -->
-          <div class="flex items-center gap-2">
-            <img src="/images/flagtunisia.png" alt="Tunisia Flag" class="w-12 h-12 rounded-lg shadow-sm" loading="lazy"/>
-            <img src="/images/logonidham-removebg-preview.png" alt="e-Khadamet Logo" class="h-14 object-contain" loading="lazy"/>
-            <div class="border-l border-gray-300 pl-4">
-              <h1 class="text-xl text-[#E31D1A] tracking-tight font-semibold leading-tight">
-                {{ langService.t('header.title') }}
-              </h1>
-              <p class="text-xs text-gray-600">{{ langService.t('header.subtitle') }}</p>
-            </div>
-          </div>
+<header class="bg-white border-b border-gray-200 shadow-sm" dir="ltr">
+  <div class="max-w-7xl mx-auto px-4 py-4">
 
-          <!-- Navigation -->
-          <nav class="hidden md:flex items-center gap-6">
-            <a href="#accueil" class="text-gray-700 hover:text-[#E31D1A] transition-colors">
-              {{ langService.t('header.home') }}
-            </a>
-            <a href="#services" class="text-gray-700 hover:text-[#E31D1A] transition-colors">
-              {{ langService.t('header.services') }}
-            </a>
-            <a href="#aide" class="text-gray-700 hover:text-[#E31D1A] transition-colors">
-              {{ langService.t('header.help') }}
-            </a>
-            <a href="#contact" class="text-gray-700 hover:text-[#E31D1A] transition-colors">
-              {{ langService.t('header.contact') }}
-            </a>
-          </nav>
+    <!-- Top Row -->
+    <div class="flex items-center justify-between" style="direction: ltr; flex-direction: row;">
+      
+      <!-- Logos + Title -->
+      <div class="flex items-center gap-3">
+        <img
+          src="/images/flagtunisia.png"
+          alt="Tunisia Flag"
+          class="w-12 h-12 rounded-md"
+        />
 
-          <!-- Boutons de connexion et langue -->
-          <div class="flex items-center gap-3">
-            <!-- Bouton changement de langue -->
-            <button
-              (click)="toggleLanguage()"
-              class="flex items-center gap-2 px-3 py-2 text-gray-700 border border-gray-300 rounded hover:bg-gray-50 transition-colors"
-              [title]="langService.getCurrentLanguage() === 'fr' ? 'Switch to Arabic' : 'Changer en français'"
-            >
-             🌐
-              <span class="text-sm font-medium">{{ langService.getCurrentLanguage() === 'fr' ? 'العربية' : 'FR' }}</span>
-            </button>
+        <img
+          src="/images/logonidham-removebg-preview.png"
+          alt="e-Khadamet Logo"
+          class="h-12 object-contain"
+        />
 
-            <button class="px-4 py-2 text-[#E31D1A] border border-[#E31D1A] rounded hover:bg-[#E31D1A] hover:text-white transition-colors">
-              {{ langService.t('header.login') }}
-            </button>
-            <button class="px-4 py-2 bg-[#E31D1A] text-white rounded hover:bg-[#C41915] transition-colors">
-              {{ langService.t('header.register') }}
-            </button>
-          </div>
+        <div class="border-l border-gray-300 pl-4">
+          <h1 class="text-xl font-semibold tracking-tight text-[#E31D1A] leading-tight">
+            {{ t().title }}
+          </h1>
+          <p class="text-sm text-gray-600">
+            l'obtention de la {{t().service}}
+          </p>
         </div>
+      </div>  
 
+      <!-- Language Button -->
+      <app-button
+        variant="outline"
+        size="sm"
+        (onClick)="onLanguageChange()"
+        class="border border-gray-300 text-gray-700 hover:bg-gray-100"
+      >
+        🌐 {{ language() === 'fr' ? 'العربية' : 'Français' }}
+      </app-button>
+    </div>
+
+    <!-- Back link -->
+    <a
+      routerLink="/acceuil2"
+      class="flex items-center gap-2 mt-2 text-xs text-gray-500 hover:text-[#E31D1A] transition-colors"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+      {{ t().backLink }}
+    </a>
+
+  </div>
+</header>
+<section>
+<div class="min-h-[calc(100vh-500px)] flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 p-4">
+  <div class="bg-gray-800 rounded-2xl shadow-2xl p-8 w-full max-w-md">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="w-16 h-16 bg-blue-700 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
       </div>
-    </header>
+      <h1 class="text-3xl font-bold text-white mb-2">{{ t().header }}</h1>
+      <p class="text-blue-200">{{ t().desc }}</p>
+    </div>
 
-<section
-  id="services"
-  class="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-gray-50"
->
+    <!-- OTP Inputs + Verify Button -->
+    <div class="mb-8">
+      <div class="flex gap-2 justify-center mb-6" (paste)="onPaste($event)">
+        @for (digit of otp(); track $index) {
+          <input
+            #otpInput
+            type="text"
+            inputmode="numeric"
+            maxlength="1"
+            [value]="digit"
+            (input)="onInputChange($index, $event)"
+            (keydown)="onKeyDown($index, $event)"
+            class="w-12 h-14 text-center text-2xl font-bold bg-white border-2 border-blue-300 rounded-lg
+                   focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"
+          />
+        }
+      </div>
 
-  <!-- Image -->
-  <img
-    src="/images/notfound.png"
-    alt="No services available"
-    class="max-w-xs md:max-w-md opacity-90"
-    loading="lazy"
-  />
-    <p class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">
-    {{ langService.t('services.empty') }}
-  </p>
+      <button
+        (click)="verify()"
+        class="w-full bg-white text-blue-900 font-semibold py-3 px-6 rounded-lg
+               hover:bg-blue-50 transition-colors duration-200 shadow-lg">
+        {{ t().verify }}
+      </button>
+    </div>
+
+    <!-- Resend section -->
+    <div class="text-center">
+      <p class="text-blue-200 mb-3">{{ t().noCode }}</p>
+
+      @if (!canResend()) {
+        <div class="text-white">
+          <p class="text-sm opacity-75">{{ t().resendIn }}</p>
+          <p class="text-2xl font-bold mt-1">{{ formatTime() }}</p>
+        </div>
+      } @else {
+        <button
+          (click)="resend()"
+          class="text-white font-semibold underline hover:text-blue-200 transition-colors duration-200">
+          {{ t().resend }}
+        </button>
+      }
+    </div>
+
+  </div>
+</div>
 </section>
 
 <footer id="contact" class="bg-gray-900 text-white">
@@ -173,7 +219,5 @@
                 {{ langService.t('footer.terms') }}
               </a>
             </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+          </div> </div>
+
